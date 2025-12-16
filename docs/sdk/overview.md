@@ -93,15 +93,25 @@ trace.event(
 
 ## 계층 구조
 
-```
-Trace
-├── Span (전처리)
-│   └── Event (로깅)
-├── Generation (LLM 호출 1)
-├── Span (후처리)
-│   ├── Generation (LLM 호출 2)
-│   └── Event (결과 저장)
-└── Event (완료)
+```mermaid
+graph TD
+    T[Trace] --> S1[Span - 전처리]
+    T --> G1[Generation - LLM 호출 1]
+    T --> S2[Span - 후처리]
+    T --> E3[Event - 완료]
+
+    S1 --> E1[Event - 로깅]
+    S2 --> G2[Generation - LLM 호출 2]
+    S2 --> E2[Event - 결과 저장]
+
+    style T fill:#e1f5fe
+    style G1 fill:#fff3e0
+    style G2 fill:#fff3e0
+    style S1 fill:#f3e5f5
+    style S2 fill:#f3e5f5
+    style E1 fill:#e8f5e9
+    style E2 fill:#e8f5e9
+    style E3 fill:#e8f5e9
 ```
 
 ## 데이터 전송

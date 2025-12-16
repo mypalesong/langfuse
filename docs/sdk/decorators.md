@@ -227,11 +227,23 @@ def postprocessing(data: str) -> str:
     # main_workflow의 자식 스팬이 됨
     return data.upper()
 
-# 결과 계층 구조:
-# main_workflow (trace)
-# ├── preprocessing (span)
-# ├── llm_processing (generation)
-# └── postprocessing (span)
+# 결과 계층 구조는 아래 다이어그램 참조
+```
+
+```mermaid
+graph TD
+    MW[main_workflow<br/>trace] --> PP[preprocessing<br/>span]
+    MW --> LP[llm_processing<br/>generation]
+    MW --> PO[postprocessing<br/>span]
+
+    style MW fill:#e1f5fe
+    style PP fill:#f3e5f5
+    style LP fill:#fff3e0
+    style PO fill:#f3e5f5
+```
+
+```python
+# 위 다이어그램과 같은 구조가 자동으로 생성됩니다
 ```
 
 ## 비동기 함수

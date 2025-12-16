@@ -20,6 +20,11 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   i18n: {
     defaultLocale: 'ko',
     locales: ['ko'],
@@ -45,6 +50,9 @@ const config: Config = {
     image: 'img/langfuse-social-card.png',
     colorMode: {
       respectPrefersColorScheme: true,
+    },
+    mermaid: {
+      theme: {light: 'neutral', dark: 'dark'},
     },
     navbar: {
       title: 'Langfuse 가이드',

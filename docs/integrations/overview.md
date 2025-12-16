@@ -60,20 +60,28 @@ generation.end(output=response)
 
 ## 통합 선택 가이드
 
-```
-어떤 프레임워크를 사용하고 있나요?
-│
-├─ LangChain → LangChain 콜백 핸들러
-│
-├─ LlamaIndex → LlamaIndex 콜백 핸들러
-│
-├─ OpenAI SDK 직접 사용 → OpenAI SDK 래퍼
-│
-├─ Anthropic SDK → Anthropic SDK 래퍼
-│
-├─ Vercel AI SDK → Vercel AI 미들웨어
-│
-└─ 기타/커스텀 → 수동 통합 (Python SDK / JS SDK)
+```mermaid
+flowchart TD
+    Q{어떤 프레임워크를<br/>사용하고 있나요?}
+
+    Q --> LC[LangChain]
+    Q --> LI[LlamaIndex]
+    Q --> OA[OpenAI SDK]
+    Q --> AN[Anthropic SDK]
+    Q --> ETC[기타/커스텀]
+
+    LC --> LCC[LangChain 콜백 핸들러]
+    LI --> LIC[LlamaIndex 콜백 핸들러]
+    OA --> OAW[OpenAI SDK 래퍼]
+    AN --> ANW[Anthropic SDK 래퍼]
+    ETC --> MAN[수동 통합<br/>Python SDK / JS SDK]
+
+    style Q fill:#e3f2fd
+    style LCC fill:#c8e6c9
+    style LIC fill:#c8e6c9
+    style OAW fill:#c8e6c9
+    style ANW fill:#c8e6c9
+    style MAN fill:#c8e6c9
 ```
 
 ## 환경 변수 설정

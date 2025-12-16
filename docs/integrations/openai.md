@@ -145,11 +145,18 @@ def multi_step_process(query: str) -> str:
     )
 
     return response.choices[0].message.content
+```
 
-# 결과:
-# multi_step_process (trace)
-# ├── analysis-step (generation)
-# └── response-step (generation)
+결과 계층 구조:
+
+```mermaid
+graph TD
+    MSP[multi_step_process<br/>trace] --> AS[analysis-step<br/>generation]
+    MSP --> RS[response-step<br/>generation]
+
+    style MSP fill:#e1f5fe
+    style AS fill:#fff3e0
+    style RS fill:#fff3e0
 ```
 
 ### 함수 호출 (Function Calling)

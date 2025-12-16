@@ -52,29 +52,26 @@ slug: /
 
 ## 아키텍처 개요
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Your Application                      │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │  LangChain  │  │ LlamaIndex  │  │  OpenAI SDK │     │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘     │
-│         │                │                │             │
-│         └────────────────┼────────────────┘             │
-│                          ▼                              │
-│              ┌─────────────────────┐                    │
-│              │   Langfuse SDK      │                    │
-│              └──────────┬──────────┘                    │
-└─────────────────────────┼───────────────────────────────┘
-                          │
-                          ▼
-            ┌─────────────────────────┐
-            │    Langfuse Server      │
-            │  ┌───────────────────┐  │
-            │  │   Trace Storage   │  │
-            │  │   Analytics       │  │
-            │  │   Dashboard       │  │
-            │  └───────────────────┘  │
-            └─────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph App["Your Application"]
+        LC[LangChain]
+        LI[LlamaIndex]
+        OA[OpenAI SDK]
+        SDK[Langfuse SDK]
+
+        LC --> SDK
+        LI --> SDK
+        OA --> SDK
+    end
+
+    subgraph Server["Langfuse Server"]
+        TS[Trace Storage]
+        AN[Analytics]
+        DB[Dashboard]
+    end
+
+    SDK --> Server
 ```
 
 ## 다음 단계
